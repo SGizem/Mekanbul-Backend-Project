@@ -1,17 +1,21 @@
 var mongoose = require('mongoose');
-var dbURI = "mongodb+srv://SedefGizem:27sg@cluster0.rfsfstm.mongodb.net/mekanbul?appName=Cluster0"; 
+
+var dbURI = process.env.MONGODB_URI; 
 
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
     console.log('Mongoose ' + dbURI + ' adresindeki veritabanına bağlandı');
 });
+
 mongoose.connection.on('error', function (err) {
     console.log('Mongoose bağlantı hatası: ' + err);
 });
+
 mongoose.connection.on('disconnected', function () {
     console.log('Mongoose bağlantısı kesildi');
 });
+
 process.on('SIGINT', function () {
     mongoose.connection.close(function () {
         console.log('Mongoose uygulama sonlandırma nedeniyle bağlantıyı kapattı');
@@ -19,4 +23,4 @@ process.on('SIGINT', function () {
     });
 });
 
-require('./venue');
+require('./venue'); 
