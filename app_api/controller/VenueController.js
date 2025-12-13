@@ -79,17 +79,19 @@ const addVenue = async function (req, res) {
 }
 
 const getVenue = async function (req, res) {
-    try {
-        await Venue.findById(req.params.venueid).exec().then(function (venue) {
-            createResponse(res, 200, venue);
-        });
-    }
-    catch (error) {
-        createResponse(res, 404, { status: "böyle bir mekan yok" });
-    }
-}
+  try {
+    const venue = await Venue.findById(req.params.venueid).exec();
 
-// GÜNCELLENDİ: Slayt 13'teki Update logic'i 
+    if (!venue) {
+      return createResponse(res, 404, { status: "Böyle bir mekan yok" });
+    }
+
+    return createResponse(res, 200, venue);
+  } catch (error) {
+    return createResponse(res, 400, error);
+  }
+};
+
 const updateVenue = async function (req, res) {
     try {
         const updatedVenue = await Venue.findByIdAndUpdate(
@@ -99,7 +101,7 @@ const updateVenue = async function (req, res) {
                 coordinates: [req.body.lat, req.body.long],
                 hours: [
                     {
-                        days: req.body.days1, // Postman'de days1 gönderdiğin için days1 olmalı (slaytta day1 yazsa bile senin modelin days1)
+                        days: req.body.days1,
                         open: req.body.open1,
                         close: req.body.close1,
                         isClosed: req.body.isClosed1 || false
@@ -112,15 +114,13 @@ const updateVenue = async function (req, res) {
                     }
                 ]
             },
-            { new: true } // Güncellenmiş veriyi döndürür
+            { new: true } 
         );
         createResponse(res, 201, updatedVenue);
     } catch (error) {
         createResponse(res, 400, { status: "Güncelleme başarısız.", error });
     }
 }
-
-// GÜNCELLENDİ: Slayt 19'daki Delete logic'i 
 const deleteVenue = async function (req, res) {
     try {
         await Venue.findByIdAndDelete(req.params.venueid).then(function (venue) {
