@@ -1,6 +1,6 @@
 var express = require('express');
 var router=express.Router();
-var ctrlVenues=require('../controller/VenueController'); //! bu satırı ve alltaki satırı ekledik
+var ctrlVenues=require('../controller/VenueController'); //! bu satırı ve alttaki satırı ekledik
 var ctrlComments=require('../controller/CommentController');
 router
 .route('/venues')

@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "e12e90bb-77a3-4c1b-8a0b-8d893396aa9a",
+		"name": "Sedef Gizem Orulluoglu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50515098",
+		"_collection_link": "https://orulluoglu-gizem0438-1842158.postman.co/workspace/Sedef-Gizem-Orulluo%C4%9Flu's-Worksp~06ec8ce1-2605-4c70-8f35-e4a7796af2f2/collection/50515098-e12e90bb-77a3-4c1b-8a0b-8d893396aa9a?action=share&source=collection_link&creator=50515098"
+	},
+	"item": [
+		{
+			"name": "Add Venue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"venueid\", pm.response.json()._id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Taş Kafe",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "SDU Batı Kampüsü",
+							"type": "text"
+						},
+						{
+							"key": "lat",
+							"value": "37.783",
+							"type": "text"
+						},
+						{
+							"key": "long",
+							"value": "30.552",
+							"type": "text"
+						},
+						{
+							"key": "days1",
+							"value": "Pazartesi-Cuma",
+							"type": "text"
+						},
+						{
+							"key": "open1",
+							"value": "08:30",
+							"type": "text"
+						},
+						{
+							"key": "close1",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "isClosed1",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "days2",
+							"value": "Cumartesi-Pazar",
+							"type": "text"
+						},
+						{
+							"key": "open2",
+							"value": "10:00",
+							"type": "text"
+						},
+						{
+							"key": "close2",
+							"value": "23:00",
+							"type": "text"
+						},
+						{
+							"key": "isClosed2",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Pizza",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Hamburger",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Nearby Venues",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues?lat=37.783&long=30.552",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "37.783"
+						},
+						{
+							"key": "long",
+							"value": "30.552"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Venue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Venue",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Taş Kafe (Güncel)",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "SDU Batı Kampüsü",
+							"type": "text"
+						},
+						{
+							"key": "lat",
+							"value": "37.783",
+							"type": "text"
+						},
+						{
+							"key": "long",
+							"value": "30.552",
+							"type": "text"
+						},
+						{
+							"key": "days1",
+							"value": "Pazartesi-Cuma",
+							"type": "text"
+						},
+						{
+							"key": "open1",
+							"value": "08:00",
+							"type": "text"
+						},
+						{
+							"key": "close1",
+							"value": "10:30",
+							"type": "text"
+						},
+						{
+							"key": "isClosed1",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "days2",
+							"value": "Cumartesi-Pazar",
+							"type": "text"
+						},
+						{
+							"key": "open2",
+							"value": "09:00",
+							"type": "text"
+						},
+						{
+							"key": "close2",
+							"value": "22:30",
+							"type": "text"
+						},
+						{
+							"key": "isClosed2",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Pizza",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Hamburger",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Çay",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Limonata",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Kahve",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"commentid\", pm.response.json()._id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "author",
+							"value": "Sedef Gizem",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Yemekler çok lezzetli, kampüsün içinde olması ayrıca bir avantaj",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}/comments",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}/comments/{{commentid}}",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments",
+						"{{commentid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Comment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "author",
+							"value": "Sedef Gizem",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Ortam güzel ama kalabalık saatlerde biraz gürültü olabiliyor",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}/comments/{{commentid}}",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments",
+						"{{commentid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}/comments/{{commentid}}",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments",
+						"{{commentid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Venue",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://mekanbul-backend-project.vercel.app/api/venues/{{venueid}}",
+					"protocol": "https",
+					"host": [
+						"mekanbul-backend-project",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
